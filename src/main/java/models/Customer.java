@@ -1,10 +1,8 @@
 package models;
-
-
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "demo-spring-mvc")
+@Table(name = "demoDB")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
