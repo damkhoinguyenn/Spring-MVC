@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wellcome</title>
+</head>
+<body>
+<h1 style="text-align: center">List customer</h1>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>address</th>
+      <th><a th:href="@{/addCustomer}">add new</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="Customer:${listCustomers}">
+      <tr>
+        <td>[[${Customer.id}]]</td>
+        <td>[[${Customer.name}]]</td>
+        <td>[[${Customer.address}]]</td>
+        <td><a th:href="@{/editCustomer}" + ${Customer.id}>Edit</a>
+        <a th:href="@{/deleteCustomer}" + ${Customer.id}>Delete</a></td>
+      </tr>
+    </th:block>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

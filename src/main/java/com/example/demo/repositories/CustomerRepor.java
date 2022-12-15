@@ -1,6 +1,6 @@
-package repositories;
+package com.example.demo.repositories;
 
-import models.Customer;
+import com.example.demo.models.Customer;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CustomerRepor extends CrudRepository<Customer, Integer> {

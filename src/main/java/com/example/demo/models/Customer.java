@@ -1,4 +1,4 @@
-package models;
+package com.example.demo.models;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,27 +12,36 @@ public class Customer {
     @Column(nullable = true, length = 45, name = "address")
     private String address;
 
-    public Integer getId() {
-        return id;
-    }
-
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }
