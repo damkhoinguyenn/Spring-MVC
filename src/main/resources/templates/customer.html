@@ -22,8 +22,8 @@
         <td>[[${Customer.id}]]</td>
         <td>[[${Customer.name}]]</td>
         <td>[[${Customer.address}]]</td>
-        <td><a th:href="@{/editCustomer}" + ${Customer.id}>Edit</a>
-        <a th:href="@{/deleteCustomer}" + ${Customer.id}>Delete</a></td>
+        <td><a th:href="@{'/editCustomer' + ${Customer.id}}">Edit</a>
+        <a th:href="@{'/deleteCustomer' + ${Customer.id}}">Delete</a></td>
       </tr>
     </th:block>
     </tbody>

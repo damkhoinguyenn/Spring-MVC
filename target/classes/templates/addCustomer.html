@@ -8,6 +8,7 @@
 <h1 style="text-align: center">Hello World</h1>
 <a th:href="@{/customers}">List customer</a>
 <form th:action="@{/customersSave}" method="post" th:object="${customer}">
+  <input type="hidden" th:field="*{id}">
   <label>Name:</label>
   <div><input type="text" th:field="*{name}"></div>
   <label>Address:</label>

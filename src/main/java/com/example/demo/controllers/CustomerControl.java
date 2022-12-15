@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Customer;
 import com.example.demo.services.CustomerSer;
+import com.example.demo.services.UserNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,18 +29,23 @@ public class CustomerControl {
         customerSer.save(customer);
         return "index";
     }
-    @GetMapping("/editCustomer")
-    public String editCustomer(Model model){
-        List<Customer> listCustomers = customerSer.listAll();
-        model.addAttribute("listCustomers", listCustomers);
-        System.out.println();
-        return "customer";
+    @GetMapping("/editCustomer{id}")
+    public String editCustomer(@PathVariable("id") Integer id, Model model) throws UserNotFound {
+        try {
+            Customer customer = customerSer.get(id);
+            model.addAttribute("customer", customer);
+            return "addCustomer";
+        } catch (UserNotFound e) {
+            throw new UserNotFound("All good");
+        }
     }
-    @GetMapping("/deleteCustomer")
-    public String deleteCustomer(Model model){
-//        Integer cusID = model.;
-//        repor.deleteById(cusID);
-//        model.addAttribute("listCustomers",);
-        return "customer";
+    @GetMapping("/deleteCustomer{id}")
+    public String deleteCustomer(@PathVariable("id") Integer id, Model model) throws UserNotFound {
+        try {
+            customerSer.delete(id);
+        } catch (UserNotFound e) {
+            throw new UserNotFound("All good");
+        }
+        return "index";
     }
 }
